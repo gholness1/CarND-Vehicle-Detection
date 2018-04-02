@@ -162,10 +162,17 @@ in order to capture both larger and smaller image patches.
 Basic HoG Window Search scale=1.0
 ![hog search 1.0][image2]
 
+Basic HoG Window Search scale=1.5
 ![hog search 1.5][image3]
+
+Basic HoG Window Search scale=2.0
 ![hog search 2.0][image4]
-![hog search 2.5][image4]
-![hog search 3][image4]
+
+Basic HoG Window Search scale=2.5
+![hog search 2.5][image5]
+
+Basic HoG Window Search scale=3.0
+![hog search 3][image6]
 
 #### 5. Heatmap
 
