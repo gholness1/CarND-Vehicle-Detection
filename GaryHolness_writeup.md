@@ -176,7 +176,7 @@ Basic HoG Window Search scale=3.0
 
 #### 5. Heatmap
 
-Once I return the rectangles from the sliding windo search, I compute a heatmap.  This heatmap
+Once I return the rectangles from the sliding window search, I compute a heatmap.  This heatmap
 includes rectangles from multiple scales, 1.0,1.5,2.0, 2.5.  Heatmap counts are added
 across the multiple scales.  The result is thresholded by a value of `hmap_thresh= 5`.
 
@@ -203,9 +203,6 @@ was a way to explicitly represent shadow information from the actual color infor
 I felt the spatial binning and color hisogram could only help since SVMs do well when
 dimensionality is high.
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
-
-![alt text][image4]
 ---
 
 ### Video Implementation
@@ -228,10 +225,13 @@ seemed to work well.
 
 ### Here are six frames and their corresponding heatmaps:
 
-![alt text][image5]
+![multi scale heatmap][image7]
+
+### Six frames with thresholded heatmap
+![thresholded heatmap][image8]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
+![labeled heatmap][image9]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![alt text][image7]
@@ -244,5 +244,9 @@ seemed to work well.
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
-
+This pipeline took a very long time to get working properly because I found I was
+making educated guesses about what the paramter should have neen. Moreover, while my goal
+was to have descriptive features, there was a practical limitation because a bigger
+feature vector dimensionality, the more costly the training.   An improvement would
+have perhaps been to set aside a validation set and use the validation set to
+find the right parameter value and combination.
