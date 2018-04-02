@@ -30,10 +30,10 @@ The goals / steps of this project are the following:
 [image3]: ./output_images/efficient_1_5_hog_window_samp.jpg
 [image4]: ./output_images/efficient_2_0_hog_window_samp.jpg
 [image5]: ./output_images/efficient_2_5_hog_window_samp.jpg
-[image5]: ./output_images/efficient_3_0_hog_window_samp.jpg
-[image6]: ./output_images/heatmap_hog_test1.jpg
-[image6]: ./output_images/heatmapthresh_hog_test1.jpg
-[image7]: ./output_images/labelimages_hog_test1.jpg
+[image6]: ./output_images/efficient_3_0_hog_window_samp.jpg
+[image7]: ./output_images/heatmap_hog_test1.jpg
+[image8]: ./output_images/heatmapthresh_hog_test1.jpg
+[image9]: ./output_images/labelimages_hog_test1.jpg
 [video1]: ./test.mp4
 [video2]: ./project_result.mp4
 
@@ -158,14 +158,28 @@ indicate the presence of a car.   I implemented multiple scales using something 
 1.0, 1.5, 2.0, and 2.5 to perform sliding window search.  I certainly need multiple scales
 in order to capture both larger and smaller image patches.
 
+
+Basic HoG Window Search scale=1.0
+![hog search 1.0][image2]
+
+![hog search 1.5][image3]
+![hog search 2.0][image4]
+![hog search 2.5][image4]
+![hog search 3][image4]
+
 #### 5. Heatmap
 
 Once I return the rectangles from the sliding windo search, I compute a heatmap.  This heatmap
 includes rectangles from multiple scales, 1.0,1.5,2.0, 2.5.  Heatmap counts are added
 across the multiple scales.  The result is thresholded by a value of `hmap_thresh= 5`.
 
+Orginal heatmap image
 
-![alt text][image3]
+![alt text][image7]
+
+Thresholded heatmap image
+
+![alt text][image8]
 
 #### 6. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
