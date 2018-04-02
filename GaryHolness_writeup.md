@@ -209,7 +209,7 @@ dimensionality is high.
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
-A [link to my video result](./project_result.mp4)
+[![video result](http://img.youtube.com/vi/_iug_AWepuw/0.jpg)](http://www.youtube.com/watch?v=_iug_AWepuw "video result")
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
