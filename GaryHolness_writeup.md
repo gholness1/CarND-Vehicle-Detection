@@ -45,6 +45,7 @@ The goals / steps of this project are the following:
 ## Writeup / README
 
 My code is implemented in a single file  `vehicle_detector.py`
+My video is implemented in a single file  `project_result.mp4'
 
 
 ### Histogram of Oriented Gradients (HOG)
