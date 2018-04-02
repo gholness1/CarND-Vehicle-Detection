@@ -34,6 +34,7 @@ The goals / steps of this project are the following:
 [image7]: ./output_images/heatmap_hog_test1.jpg
 [image8]: ./output_images/heatmapthresh_hog_test1.jpg
 [image9]: ./output_images/labelimages_hog_test1.jpg
+[image10]: ./output_images/efficient_hog_window_samp.jpg
 [video1]: ./test.mp4
 [video2]: ./project_result.mp4
 
@@ -160,7 +161,7 @@ in order to capture both larger and smaller image patches.
 
 
 Basic HoG Window Search scale=1.0
-![hog search 1.0][image2]
+![hog search 1.0][image10]
 
 Basic HoG Window Search scale=1.5
 ![hog search 1.5][image3]
@@ -234,7 +235,7 @@ seemed to work well.
 ![labeled heatmap][image9]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
+![alt text][image2]
 
 
 
