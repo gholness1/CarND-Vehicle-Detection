@@ -1,4 +1,4 @@
-#####
+####
 # Gary Holness
 #
 # Vehicle Detection Project Submission 
@@ -12,6 +12,7 @@
 import os
 import glob
 import numpy as np
+
 
 #####
 # Open streaming version of the data and load images for
@@ -73,6 +74,7 @@ from skimage.feature import hog
 from sklearn.svm import LinearSVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+
 #for scikit-learn <= 0.18 use
 #from sklearn.cross_validation import train_test_split
 
@@ -405,8 +407,10 @@ def search_windows(img, windows, clf, scaler, color_space='RGB', xy_window= (64,
         test_features = scaler.transform(np.array(features).reshape(1, -1))
         #6) Predict using your classifier
         prediction = clf.predict(test_features)
+        confidence = clf.decision_function(test_features)
+        #print("prediction= ",prediction, " confidence= ",confidence)
         #7) If positive (prediction == 1) then save the window
-        if prediction == 1:
+        if ((prediction == 1) & (confidence >= 0.6)):
             on_windows.append(window)
     #8) Return windows for positive detections
     return on_windows
@@ -415,20 +419,20 @@ def search_windows(img, windows, clf, scaler, color_space='RGB', xy_window= (64,
 #####
 # display images tiled in subplot
 ##
-def visualize(fig, rows, cols, imgs, titles):
+def visualize(fig, rows, cols, imgs, titles,cmap):
    for i, img in enumerate(imgs):
       plt.subplot(rows, cols, i+1)
       plt.title(i+1)
       img_dims = len(img.shape)
       if (img_dims < 3):
-         plt.imshow(img,cmap='hot')
+         plt.imshow(img,cmap)
          plt.title(titles[i])
       else:
          plt.imshow(img)
          plt.title(titles[i])
 
    plt.show(block=False)
-   plt.pause(5)
+   plt.pause(3)
 
 car_index= np.random.randint(0,len(cars))
 notcar_index= np.random.randint(0,len(notcars))
@@ -469,10 +473,18 @@ notcar_image= mpimg.imread(notcars[notcar_index])
 # all color channels captures more aspects of appearance (color/shape) based features of
 # objects in images.
 #
-# spatial_size=(32,32)
-# I decided to increase to 32x x32 because I wanted to have more image information in context.
-# This include aspects of the foreground objects with some background.  Having larger spatial
-# size I believe increases object information in context, that is with surrounding information.
+# orient=12
+# I chose to have a bit larger number of orientation 'bins' for HoG features.  The rationale
+# behind this was to campure the broader range of oriented gradients (edges) in a car image.
+# Cars are generally curved and therefore contain angle information across a boarder range
+# of angle values.   Non-Car objects tend to have straight edges and do not have the type
+# of curvature that cars do.
+#
+# spatial_size=(16,16)
+# I decided to keep 16 x 16 because I felt it was somewhat of a compression of the original
+# image imformation in context.  This include aspects of the foreground objects with some
+# background.  With this spatial size, I believe suitabley depicts object information in
+# context, that is with surrounding information.
 #
 # hist_bins=32
 # I wrestled with this one going back and forth between larger values (liek 32 bins I used) and
@@ -492,12 +504,12 @@ notcar_image= mpimg.imread(notcars[notcar_index])
 # sample size, and how well in-sample and out-of-sample error coincide).
 
 color_space= 'YCrCb'   #Can be RGB, HSV, LUV, HLS, YUV, YCrCb
-#color_space= 'YUV'   #Can be RGB, HSV, LUV, HLS, YUV, YCrCb
-orient= 12
+#color_space= 'RGB'   #Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+orient= 12  #12
 pix_per_cell = 10  #10 8
-cell_per_block= 2
+cell_per_block= 2  #2
 hog_channel = 'ALL'  #0
-spatial_size= (32,32)  #(16,16)
+spatial_size= (16,16)  #(32,32)
 hist_bins= 32  #32
 hist_range=(40, 256)  #(0,256)
 spatial_feat = True
@@ -505,7 +517,7 @@ hist_feat= True
 hog_feat = True
 hog_vis= True
 
-DO_VIS = True
+DO_VIS = False
 
 if DO_VIS:
   #####
@@ -537,7 +549,7 @@ if DO_VIS:
   images= [car_image, car_hog_image, notcar_image, notcar_hog_image]
   titles= ['car image', 'car HoG image', 'not car image', 'not car HoG image']
   fig = plt.figure(figsize=(12,13))
-  visualize(fig,1,4,images, titles)
+  visualize(fig,1,4,images, titles,cmap='hot')
   fig.savefig('./output_images/car_noncar_hog_example.jpg')
 
 
@@ -665,7 +677,9 @@ IMG_COLS= 1280
 HOOD_HEIGHT=64
 
 #y_start_stop= [400, 720-HOOD_HEIGHT]
-y_start_stop= [368, 720-HOOD_HEIGHT]
+#y_start_stop= [368, 720-HOOD_HEIGHT] 
+y_start_stop= [240, 720-HOOD_HEIGHT] 
+#y_start_stop= [304, 720-HOOD_HEIGHT]
 x_start_stop= [None, None]
 xoverlap= 0.25
 yoverlap= 0.25
@@ -768,7 +782,7 @@ if DO_SLIDING_WINDOW_TEST:
    
   #fig = plt.figure(figsize=(12,18), dpi=300)
   fig = plt.figure(figsize=(6,9), dpi=300)
-  visualize(fig, 4, 3, images, titles)
+  visualize(fig, 4, 3, images, titles,cmap='hot')
   fig.savefig('./output_images/test_vehicle_detection.jpg')
 
   
@@ -845,8 +859,11 @@ def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, ce
             test_features = X_scaler.transform(np.hstack((spatial_features, hist_features, hog_features)).reshape(1, -1))    
             #test_features = X_scaler.transform(np.hstack((shape_feat, hist_feat)).reshape(1, -1))    
             test_prediction = svc.predict(test_features)
+            confidence = svc.decision_function(test_features)
+            #print("test_prediction= ",test_prediction, " confidence= ",confidence)
+     
             
-            if test_prediction == 1:
+            if ((test_prediction == 1) & (confidence >= 0.6)):
                 xbox_left = np.int(xleft*scale)
                 ytop_draw = np.int(ytop*scale)
                 win_draw = np.int(window*scale)
@@ -872,7 +889,9 @@ def apply_threshold(heatmap, threshold):
     # Return thresholded map
     return heatmap
 
-
+#####
+# draw boxes using labels (gray color combo of recangles)
+##
 def draw_labeled_bboxes(img, labels):
     # Iterate through all detected cars
     for car_number in range(1, labels[1]+1):
@@ -920,7 +939,7 @@ if DO_TEST_HOG_SCALES:
 
 
    fig = plt.figure(figsize=(12,13))
-   visualize(fig,4,3,rect_images, titles)
+   visualize(fig,4,3,rect_images, titles,cmap='hot')
    fig.savefig('./output_images/efficient_hog_window_samp.jpg')
 
 
@@ -943,7 +962,7 @@ if DO_TEST_HOG_SCALES:
 
 
    fig = plt.figure(figsize=(12,13))
-   visualize(fig,4,3,rect_images, titles)
+   visualize(fig,4,3,rect_images, titles,cmap='hot')
    fig.savefig('./output_images/efficient_1_5_hog_window_samp.jpg')
 
 
@@ -966,7 +985,7 @@ if DO_TEST_HOG_SCALES:
 
 
    fig = plt.figure(figsize=(12,13))
-   visualize(fig,4,3,rect_images, titles)
+   visualize(fig,4,3,rect_images, titles,cmap='hot')
    fig.savefig('./output_images/efficient_2_0_hog_window_samp.jpg')
 
 
@@ -989,7 +1008,7 @@ if DO_TEST_HOG_SCALES:
 
 
    fig = plt.figure(figsize=(12,13))
-   visualize(fig,4,3,rect_images, titles)
+   visualize(fig,4,3,rect_images, titles,cmap='hot')
    fig.savefig('./output_images/efficient_2_5_hog_window_samp.jpg')
 
 
@@ -1011,10 +1030,28 @@ if DO_TEST_HOG_SCALES:
       i+= 1
 
    fig = plt.figure(figsize=(12,13))
-   visualize(fig,4,3,rect_images, titles)
+   visualize(fig,4,3,rect_images, titles,cmap='hot')
    fig.savefig('./output_images/efficient_3_0_hog_window_samp.jpg')
 
 
+
+#####
+# perform heatmap using stack of different scales
+##
+def do_heat_stack(scales, img, ystart, ystop, svc, X_scaler, orient, pix_per_cell, cell_per_block, \
+              hog_channel, spatial_size, hist_bins, conv):
+
+   heatmap_img = np.zeros_like(img[:,:,0])
+
+   for scale in scales:
+      rects, rect_img = find_cars(img, ystart, ystop, scale, svc, X_scaler, \
+                                 orient, pix_per_cell, cell_per_block, \
+                                 hog_channel, spatial_size, hist_bins, conv)
+
+      heatmap_img= add_heat(heatmap_img, rects)    
+
+   return heatmap_img
+   
 
 #####
 # Test out heat map
@@ -1023,75 +1060,153 @@ if DO_TEST_HOG_SCALES:
 img= test_images[0]
 
 heatmap_images = []
-heatmap_titles = []
+heatmap_titles = titles
 
-i= 0
-for img in test_images:
-  heatmap_titles.append("heatmap test" + str(i+1) + ".jpg")
+scales= [1.0, 1.5, 2.0, 2.5]
 
-  heatmap_img = np.zeros_like(img[:,:,0])
+DO_HEAT_MAP_TEST= False
 
-# scale=1.0
-# rects, rect_img = find_cars(img, y_start_stop[0], y_start_stop[1], scale, svc, X_scaler, \
-#                            orient, pix_per_cell, cell_per_block, \
-#                            hog_channel, spatial_size, hist_bins,conv)
-#
-# heatmap_img= add_heat(heatmap_img, rects)
+from scipy.ndimage.measurements import label
 
-  scale=1.5
-  rects, rect_img = find_cars(img, y_start_stop[0], y_start_stop[1], scale, svc, X_scaler, \
+if DO_HEAT_MAP_TEST:
+  i= 0
+
+  for img in test_images:
+    heatmap_img= do_heat_stack(scales, img, y_start_stop[0], y_start_stop[1], svc, X_scaler, \
                              orient, pix_per_cell, cell_per_block, \
                              hog_channel, spatial_size, hist_bins,conv)
 
-  heatmap_img= add_heat(heatmap_img, rects)
+    #heatmap_img = heatmap_img/len(scales)
+
+    heatmap_images.append(heatmap_img)
+
+    i+= 1
+
+  fig = plt.figure(figsize=(12,13))
+  visualize(fig,4,3,heatmap_images, heatmap_titles,cmap='hot')
+  fig.savefig('./output_images/heatmap_hog_test1.jpg')
 
 
-  scale=2.0
-  rects, rect_img = find_cars(img, y_start_stop[0], y_start_stop[1], scale, svc, X_scaler, \
-                             orient, pix_per_cell, cell_per_block, \
-                             hog_channel, spatial_size, hist_bins,conv)
 
-  heatmap_img= add_heat(heatmap_img, rects)
+  #####
+  # Test out thresholded heatmap
+  ###
+  heatmap_images_thresh= []
 
+  hmap_thresh= 5
 
+  for heatmap_img in heatmap_images:
+    heatmap_img_thresh= apply_threshold(heatmap_img, hmap_thresh)
+    heatmap_images_thresh.append(heatmap_img_thresh)
 
-  scale=2.5
-  rects, rect_img = find_cars(img, y_start_stop[0], y_start_stop[1], scale, svc, X_scaler, \
-                             orient, pix_per_cell, cell_per_block, \
-                             hog_channel, spatial_size, hist_bins,conv)
-
-  heatmap_img= add_heat(heatmap_img, rects)
-
-  scale=3.0
-  rects, rect_img = find_cars(img, y_start_stop[0], y_start_stop[1], scale, svc, X_scaler, \
-                             orient, pix_per_cell, cell_per_block, \
-                             hog_channel, spatial_size, hist_bins,conv)
-
-  heatmap_img= add_heat(heatmap_img, rects)
+  fig = plt.figure(figsize=(12,13))
+  visualize(fig,4,3,heatmap_images_thresh, heatmap_titles,cmap='hot')
+  fig.savefig('./output_images/heatmapthresh_hog_test1.jpg')
 
 
-  heatmap_images.append(heatmap_img)
 
-  i+= 1
+  #####
+  # Test the labeled thresholded heatmap
+  ##
+  label_images = []
+  the_labels = []
+  for heatmap_img in heatmap_images_thresh:
+     labels = label(heatmap_img)
+     label_images.append(labels[0])
+     the_labels.append(labels)
 
-fig = plt.figure(figsize=(12,13))
-visualize(fig,4,3,heatmap_images, heatmap_titles)
-fig.savefig('./output_images/heatmap_hog_test1.jpg')
+  fig = plt.figure(figsize=(12,13))
+  visualize(fig,4,3,label_images, heatmap_titles,cmap='gray')
+  fig.savefig('./output_images/labelimages_hog_test1.jpg')
+
+
+  #####
+  # Test draw_labeled_bboxes
+  ###
+
+  draw_images= []
+  num_images= len(test_images)
+
+  for i in range(0,num_images):
+     img= test_images[i]
+     labels= the_labels[i]
+   
+     draw_img = draw_labeled_bboxes(img, labels)
+     draw_images.append(draw_img)
+
+  fig = plt.figure(figsize=(12,13))
+  visualize(fig,4,3,draw_images, heatmap_titles,cmap='gray')
+  fig.savefig('./output_images/drawimages_hog_test1.jpg')
 
 
 
 #####
-# Test out thresholded heatmap
+# final processing pipeline
 ###
-heatmap_images_thresh= []
+from queue import Queue
 
-hmap_thresh= 5
+hmap_window_size= 8
 
-for heatmap_img in heatmap_images:
-  heatmap_img_thresh= apply_threshold(heatmap_img, hmap_thresh)
-  heatmap_images_thresh.append(heatmap_img_thresh)
+global hmap_win
+hmap_win= Queue(hmap_window_size)
 
-fig = plt.figure(figsize=(12,13))
-visualize(fig,4,3,heatmap_images_thresh, heatmap_titles)
-fig.savefig('./output_images/heatmapthresh_hog_test1.jpg')
+def process_image(img):
+  hmap_thresh= 5
+  heatmap_img= do_heat_stack(scales, img, y_start_stop[0], y_start_stop[1], svc, X_scaler, \
+                             orient, pix_per_cell, cell_per_block, \
+                             hog_channel, spatial_size, hist_bins,conv)
+  DO_AVERAGE= True
 
+  if (DO_AVERAGE):
+    if (hmap_win.full()):
+       hmap_win.get() 
+       hmap_win.put(heatmap_img)
+       num_maps= 8
+    else:
+       hmap_win.put(heatmap_img)
+       #num_maps = hmap_win.qsize()
+       num_maps= 8
+
+    #print("hmap_win.qsize()= ",hmap_win.qsize());
+
+    hlist= list(hmap_win.queue)
+
+    avg_heatmap= np.zeros_like(hlist[0],dtype=np.float)
+
+    for hmap in hlist:
+      avg_heatmap = avg_heatmap + np.array(hmap,dtype=np.float)/num_maps
+    
+
+      avg_heatmap = np.array(np.round(avg_heatmap),dtype=np.uint8) 
+
+    #print(avg_heatmap)
+
+    #heatmap_img_t = apply_threshold(heatmap_img, hmap_thresh)
+    #hmap_thresh=5
+    heatmap_img_t = apply_threshold(avg_heatmap, hmap_thresh)
+  else:
+    heatmap_img_t = apply_threshold(heatmap_img, hmap_thresh)
+
+  labels= label(heatmap_img_t)
+  
+  draw_img = draw_labeled_bboxes(np.copy(img), labels)
+
+  return draw_img
+  
+
+from moviepy.editor import VideoFileClip
+from IPython.display import HTML
+
+#test_output = 'test.mp4'
+#test_video= 'test_video.mp4'
+
+test_output = 'project_result.mp4'
+test_video= 'project_video.mp4'
+
+clip = VideoFileClip(test_video)
+test_clip = clip.fl_image(process_image)
+
+test_clip.write_videofile(test_output,audio=False)
+
+HTML("""<video width="960" height="540" controls> <source src="{0}"> </video>""".format(test_output))
+  
