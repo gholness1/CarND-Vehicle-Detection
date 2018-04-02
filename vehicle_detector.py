@@ -6,7 +6,6 @@
 # This project performs feature extraction, windowed search, and classification in order
 # to implement vehicle detection.  The high level approach implements the following steps.
 #
-#
 ##
 
 import os
