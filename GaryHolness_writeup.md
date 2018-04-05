@@ -280,7 +280,7 @@ find the right parameter value and combination.
 This is a resubmission representing suggestions received from review of a project submission.
 After trying out suggestions for changes to `pix_per_cell` as well as the number of histogram
 bins and orientations, I found the performance of my system didn't improve, rather it got worse.
-The suggestion of using 'GridSearchCV` improved my linear classifier performance from 98% accuracy
+The suggestion of using `GridSearchCV` improved my linear classifier performance from 98% accuracy
 to 99% accuracy.   What worked better for me was to increase the window size of the average heatmap
 from 5 to 8, decreasing the confidence threshold using svc.decision_function from 0.6 to 0.15, and
 setting `x_start_stop=[200, None]` in order to exclude the left shoulder of the roadway from
