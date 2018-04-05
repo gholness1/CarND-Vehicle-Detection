@@ -73,6 +73,7 @@ from skimage.feature import hog
 from sklearn.svm import LinearSVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
 
 #for scikit-learn <= 0.18 use
 #from sklearn.cross_validation import train_test_split
@@ -409,7 +410,7 @@ def search_windows(img, windows, clf, scaler, color_space='RGB', xy_window= (64,
         confidence = clf.decision_function(test_features)
         #print("prediction= ",prediction, " confidence= ",confidence)
         #7) If positive (prediction == 1) then save the window
-        if ((prediction == 1) & (confidence >= 0.6)):
+        if ((prediction == 1) & (confidence >= 0.15)):
             on_windows.append(window)
     #8) Return windows for positive detections
     return on_windows
@@ -505,12 +506,12 @@ notcar_image= mpimg.imread(notcars[notcar_index])
 color_space= 'YCrCb'   #Can be RGB, HSV, LUV, HLS, YUV, YCrCb
 #color_space= 'RGB'   #Can be RGB, HSV, LUV, HLS, YUV, YCrCb
 orient= 12  #12
-pix_per_cell = 10  #10 8
+pix_per_cell = 10  #10 8 13 16
 cell_per_block= 2  #2
 hog_channel = 'ALL'  #0
-spatial_size= (16,16)  #(32,32)
-hist_bins= 32  #32
-hist_range=(40, 256)  #(0,256)
+spatial_size= (32,32)  #(32,32) (16,16)
+hist_bins= 16  #32 25
+hist_range=(0, 256)  #(0,256) (40,256)
 spatial_feat = True
 hist_feat= True
 hog_feat = True
@@ -550,6 +551,7 @@ if DO_VIS:
   fig = plt.figure(figsize=(12,13))
   visualize(fig,1,4,images, titles,cmap='hot')
   fig.savefig('./output_images/car_noncar_hog_example.jpg')
+  
 
 
 
@@ -647,11 +649,23 @@ print("Feature vector dimensionality= ",len(X_train[0]))
 # Linear Support Vector Machine Classifier
 ##
 
-svc = LinearSVC()
+clf = LinearSVC()
+
+tuned_params = [{'C':[0.0001, 0.001, 0.01, 0.1, 1.0, 10, 100, 1000]}]
+
+scores=["accuracy"]
 
 print("Training SVC...")
 t= time.time()
+
+print("Performing Grid Search for C param (regularization)...")
+svc = GridSearchCV(clf, tuned_params, cv=10,refit=True,scoring='accuracy')
+
+print("Training the classifier...")
 svc.fit(X_train,y_train)
+
+print("Best parameters are...")
+print(svc.best_params_)
 
 print(time.time() -t, "Seconds to train SVC")
 
@@ -674,18 +688,22 @@ print("SVC test accuracy= ",accuracy)
 IMG_ROWS= 720
 IMG_COLS= 1280
 HOOD_HEIGHT=64
+LEFT_SHOULDER= 200
 
 #y_start_stop= [400, 720-HOOD_HEIGHT]
-#y_start_stop= [368, 720-HOOD_HEIGHT] 
-y_start_stop= [240, 720-HOOD_HEIGHT] 
+y_start_stop= [368, 720-HOOD_HEIGHT] 
+#y_start_stop= [240, 720-HOOD_HEIGHT] 
+#y_start_stop= [360, 720] 
+#y_start_stop= [140, 720] 
 #y_start_stop= [304, 720-HOOD_HEIGHT]
-x_start_stop= [None, None]
-xoverlap= 0.25
-yoverlap= 0.25
+#x_start_stop= [None, None]
+x_start_stop= [LEFT_SHOULDER, None]
+xoverlap= 0.75
+yoverlap= 0.75
 xy_overlap= (xoverlap, yoverlap)
 
-xwindow= 64
-ywindow= 64
+xwindow= 64  #xwindow=64
+ywindow= 64  #ywindow=64
 xy_window= (xwindow, ywindow)
 
 clf = svc
@@ -862,7 +880,7 @@ def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, ce
             #print("test_prediction= ",test_prediction, " confidence= ",confidence)
      
             
-            if ((test_prediction == 1) & (confidence >= 0.6)):
+            if ((test_prediction == 1) & (confidence >= 0.15)):
                 xbox_left = np.int(xleft*scale)
                 ytop_draw = np.int(ytop*scale)
                 win_draw = np.int(window*scale)
@@ -1061,7 +1079,7 @@ img= test_images[0]
 heatmap_images = []
 heatmap_titles = titles
 
-scales= [1.0, 1.5, 2.0, 2.5]
+scales= [ 1.0, 1.2, 1.5, 2.0]
 
 DO_HEAT_MAP_TEST= False
 
@@ -1092,7 +1110,7 @@ if DO_HEAT_MAP_TEST:
   ###
   heatmap_images_thresh= []
 
-  hmap_thresh= 5
+  hmap_thresh= 4
 
   for heatmap_img in heatmap_images:
     heatmap_img_thresh= apply_threshold(heatmap_img, hmap_thresh)
@@ -1138,7 +1156,6 @@ if DO_HEAT_MAP_TEST:
   fig.savefig('./output_images/drawimages_hog_test1.jpg')
 
 
-
 #####
 # final processing pipeline
 ###
@@ -1150,7 +1167,7 @@ global hmap_win
 hmap_win= Queue(hmap_window_size)
 
 def process_image(img):
-  hmap_thresh= 5
+  hmap_thresh= 4
   heatmap_img= do_heat_stack(scales, img, y_start_stop[0], y_start_stop[1], svc, X_scaler, \
                              orient, pix_per_cell, cell_per_block, \
                              hog_channel, spatial_size, hist_bins,conv)
@@ -1160,6 +1177,7 @@ def process_image(img):
     if (hmap_win.full()):
        hmap_win.get() 
        hmap_win.put(heatmap_img)
+       #num_maps= hmap_win.qsize()
        num_maps= 8
     else:
        hmap_win.put(heatmap_img)

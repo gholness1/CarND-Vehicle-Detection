@@ -1,0 +1,765 @@
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4656
+notcar_features len=  500
+6.479860067367554 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  8
+pixels per cell=  12
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4656
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.01}
+105.31938195228577 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  3120
+notcar_features len=  500
+6.64149808883667 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  12
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  3120
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+50.21902108192444 Seconds to train SVC
+SVC test accuracy=  0.99
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  3120
+notcar_features len=  500
+6.583835124969482 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  12
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  3120
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.01}
+40.1894850730896 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2112
+notcar_features len=  500
+5.285552978515625 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+30.31467294692993 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2112
+notcar_features len=  500
+5.2469329833984375 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.1}
+28.526952981948853 Seconds to train SVC
+SVC test accuracy=  0.99
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2112
+notcar_features len=  500
+5.2444798946380615 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+32.859442949295044 Seconds to train SVC
+SVC test accuracy=  1.0
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2112
+notcar_features len=  500
+5.809164047241211 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+35.86442422866821 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2112
+notcar_features len=  500
+5.933420896530151 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.01}
+25.210781812667847 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  8792
+car_features[0] len=  2112
+notcar_features len=  8968
+100.83311605453491 Seconds to compute features...
+X_train_unscaled len=  15984
+X_test_unscaled len=  1776
+y_train len=  15984
+y_test len=  1776
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+661.3424718379974 Seconds to train SVC
+SVC test accuracy=  0.9887
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  8792
+car_features[0] len=  2112
+notcar_features len=  8968
+100.07012009620667 Seconds to compute features...
+X_train_unscaled len=  15984
+X_test_unscaled len=  1776
+y_train len=  15984
+y_test len=  1776
+orientations=  12
+pixels per cell=  14
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2112
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+649.7370491027832 Seconds to train SVC
+SVC test accuracy=  0.9887
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+sliding windows test, finding windows in  test1.jpg
+0.4508500099182129 seconds to search one image, resulting in  88 windows
+650.4995532035828 Seconds to find windows
+sliding windows test, finding windows in  test2.jpg
+0.4357261657714844 seconds to search one image, resulting in  88 windows
+650.9364240169525 Seconds to find windows
+sliding windows test, finding windows in  test3.jpg
+0.42793989181518555 seconds to search one image, resulting in  88 windows
+651.365480184555 Seconds to find windows
+sliding windows test, finding windows in  test4.jpg
+0.4765188694000244 seconds to search one image, resulting in  88 windows
+651.8431651592255 Seconds to find windows
+sliding windows test, finding windows in  test5.jpg
+0.4439210891723633 seconds to search one image, resulting in  88 windows
+652.2882912158966 Seconds to find windows
+sliding windows test, finding windows in  test6.jpg
+0.4345729351043701 seconds to search one image, resulting in  88 windows
+652.7240071296692 Seconds to find windows
+0.9511079788208008  seconds to find HoG windows in  test1.jpg
+0.8904910087585449  seconds to find HoG windows in  test2.jpg
+0.8948462009429932  seconds to find HoG windows in  test3.jpg
+0.9001491069793701  seconds to find HoG windows in  test4.jpg
+0.8935689926147461  seconds to find HoG windows in  test5.jpg
+0.9046330451965332  seconds to find HoG windows in  test6.jpg
+0.36618900299072266  seconds to find HoG windows in  test1.jpg
+0.3663489818572998  seconds to find HoG windows in  test2.jpg
+0.3587150573730469  seconds to find HoG windows in  test3.jpg
+0.35454702377319336  seconds to find HoG windows in  test4.jpg
+0.35845017433166504  seconds to find HoG windows in  test5.jpg
+0.3735218048095703  seconds to find HoG windows in  test6.jpg
+0.21469998359680176  seconds to find HoG windows in  test1.jpg
+0.21117711067199707  seconds to find HoG windows in  test2.jpg
+0.2094559669494629  seconds to find HoG windows in  test3.jpg
+0.20911598205566406  seconds to find HoG windows in  test4.jpg
+0.2099919319152832  seconds to find HoG windows in  test5.jpg
+0.21080589294433594  seconds to find HoG windows in  test6.jpg
+0.14009785652160645  seconds to find HoG windows in  test1.jpg
+0.13665318489074707  seconds to find HoG windows in  test2.jpg
+0.13727998733520508  seconds to find HoG windows in  test3.jpg
+0.13663411140441895  seconds to find HoG windows in  test4.jpg
+0.13704204559326172  seconds to find HoG windows in  test5.jpg
+0.13841795921325684  seconds to find HoG windows in  test6.jpg
+0.08846116065979004  seconds to find HoG windows in  test1.jpg
+0.08261895179748535  seconds to find HoG windows in  test2.jpg
+0.08328700065612793  seconds to find HoG windows in  test3.jpg
+0.08429312705993652  seconds to find HoG windows in  test4.jpg
+0.08389496803283691  seconds to find HoG windows in  test5.jpg
+0.0833590030670166  seconds to find HoG windows in  test6.jpg
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: project_result.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2928
+notcar_features len=  500
+6.709637880325317 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  12
+cells per block=  2
+histogram bins=  16
+spatial size=  (16, 16)
+Feature vector dimensionality=  2928
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+69.55767011642456 Seconds to train SVC
+SVC test accuracy=  0.99
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2052
+notcar_features len=  500
+5.608297109603882 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  32
+spatial size=  (16, 16)
+Feature vector dimensionality=  2052
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+19.507657051086426 Seconds to train SVC
+SVC test accuracy=  0.99
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  2052
+notcar_features len=  500
+5.844887971878052 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  32
+spatial size=  (16, 16)
+Feature vector dimensionality=  2052
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+23.63762903213501 Seconds to train SVC
+SVC test accuracy=  1.0
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4356
+notcar_features len=  500
+5.766485929489136 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  32
+spatial size=  (32, 32)
+Feature vector dimensionality=  4356
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+76.94178891181946 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4308
+notcar_features len=  500
+5.809262990951538 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4308
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+77.68590497970581 Seconds to train SVC
+SVC test accuracy=  0.98
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4308
+notcar_features len=  500
+5.743342876434326 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4308
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+62.535900831222534 Seconds to train SVC
+SVC test accuracy=  0.96
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4308
+notcar_features len=  500
+5.9747209548950195 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4308
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.01}
+93.45570707321167 Seconds to train SVC
+SVC test accuracy=  0.97
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  500
+car_features[0] len=  4308
+notcar_features len=  500
+5.810646057128906 Seconds to compute features...
+X_train_unscaled len=  900
+X_test_unscaled len=  100
+y_train len=  900
+y_test len=  100
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4308
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+93.45571208000183 Seconds to train SVC
+SVC test accuracy=  0.97
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video test.mp4
+[MoviePy] Writing video test.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: test.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  8792
+car_features[0] len=  4308
+notcar_features len=  8968
+101.21891808509827 Seconds to compute features...
+X_train_unscaled len=  15984
+X_test_unscaled len=  1776
+y_train len=  15984
+y_test len=  1776
+orientations=  11
+pixels per cell=  16
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  4308
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+1393.5420219898224 Seconds to train SVC
+SVC test accuracy=  0.9887
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: project_result.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  8792
+car_features[0] len=  6420
+notcar_features len=  8968
+151.97869515419006 Seconds to compute features...
+X_train_unscaled len=  15984
+X_test_unscaled len=  1776
+y_train len=  15984
+y_test len=  1776
+orientations=  11
+pixels per cell=  10
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  6420
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+1869.6474750041962 Seconds to train SVC
+SVC test accuracy=  0.9893
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: project_result.mp4 
+
+Number of vehicle images found:  8792
+Number of non-vehicle images found:  8968
+Computing features...
+car_features len=  8792
+car_features[0] len=  6720
+notcar_features len=  8968
+159.67891311645508 Seconds to compute features...
+X_train_unscaled len=  15984
+X_test_unscaled len=  1776
+y_train len=  15984
+y_test len=  1776
+orientations=  12
+pixels per cell=  10
+cells per block=  2
+histogram bins=  16
+spatial size=  (32, 32)
+Feature vector dimensionality=  6720
+Training SVC...
+Performing Grid Search for C param (regularization)...
+Training the classifier...
+Best parameters are...
+{'C': 0.001}
+1820.1576659679413 Seconds to train SVC
+SVC test accuracy=  0.9904
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+img.size=  (720, 1280, 3)
+[MoviePy] >>>> Building video project_result.mp4
+[MoviePy] Writing video project_result.mp4
+[MoviePy] Done.
+[MoviePy] >>>> Video ready: project_result.mp4 
+
