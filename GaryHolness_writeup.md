@@ -62,7 +62,6 @@ routine `get_hog_features()` (lines 105-124).  The HoG features are performed on
 channels of the selected color space representation (YCrCb).
 
 A test was created for this to visualize the HoG features for a car and non-car image
-
 ![hog features][image1]
 As can be seen, the different curvatures represented in the shape of a car represent 
 a more uniform distribution over gradient angles than for non-car objects.  Code for the
